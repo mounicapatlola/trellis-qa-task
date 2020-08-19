@@ -1,98 +1,59 @@
-# Trellis
+# Trellis Quality Assurance Exercise
 
-This project was generated using [Nx](https://nx.dev).
+This exercise is designed to assess how you approach tasks that will be required in our QA position.
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+Please fork this repository and commit changes you make. Once completed, provide Trellis access.
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+## The Application
 
-## Quick Start & Documentation
+This code repository contains a sample application that needs to be tested. The
+application allows adding and removing items from a list and marking an item as complete.
 
-[Nx Documentation](https://nx.dev/angular)
+## Exercise Requirements
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+With the provided Angular application, perform the following:
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
+### Manual Testing
+1. Write a test document for testing adding a new item, deleting an item and marking an item
+   as completed.
 
-## Adding capabilities to your workspace
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+### End to End
+1. Using Cypress, write some automated tests of your scenarios. A cypress project is created for you in
+   `app/todo-e2e`.
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+### Unit
+1. Using Spectator and Jest, write a component level test for any angular component. The components can be found in `libs/ui`.
 
-Below are our core plugins:
+2. Using Supertest and Jest, write an integration test for the API app. The project is hosted in
+`app/api`.
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+We are interested in how you approach these tasks than the final result.
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
+## Running the Application
 
-## Generate an application
+This is a [Angular](https://angular.io/)
+project using [NX](https://nx.dev/angular/getting-started/why-nx). To run the application on your machine,
+you will need:
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+- NodeJS https://nodejs.org/en/
+- Yarn https://yarnpkg.com/en/
 
-> You can use any of the plugins above to generate applications as well.
+With those pre-requisites installed, follow these steps to run the application:
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+1.  Clone the git repository to your machine
+2.  Inside the repository, run `yarn install`
+3.  Inside the repository, run `yarn nx s todos`
+3.  Inside the repository, run `yarn nx s api`
 
-## Generate a library
+This will open the application in your default web browser at
+http://localhost:4200.
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+## Running the Test Framework
 
-> You can also use any of the plugins above to generate libraries as well.
+NX integrates [Cypress](https://www.cypress.io/) by default. You can find the test files in
+`app/todos-e2e/src/integration` The test suite can be run with:
 
-Libraries are sharable across libraries and applications. They can be imported from `@trellis/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+```sh
+yarn nx e2e dashboard-e2e --watch
+```

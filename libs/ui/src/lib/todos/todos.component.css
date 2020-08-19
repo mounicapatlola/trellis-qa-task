@@ -1,0 +1,11 @@
+.todo-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 256px;
+    margin-top: 16px;
+}
+
+.completed {
+    text-decoration: line-through;
+}
