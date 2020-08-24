@@ -1,25 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TodosComponent } from './todos.component';
+import { createComponentFactory, Spectator  } from '@ngneat/spectator/jest'
 
 describe('TodosComponent', () => {
-  let component: TodosComponent;
-  let fixture: ComponentFixture<TodosComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TodosComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TodosComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  const createComponent = createComponentFactory({
+    component: TodosComponent
   });
+  let spectator: Spectator<TodosComponent>;
+  beforeEach(() => spectator = createComponent())
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  //test to check web page is launched successfully.
+  it('should create app', () => {
+    const app = spectator.component;
+    expect(app).toBeTruthy();
   });
+  it('check todos list', () => {
+    expect(spectator.query('.todos')).toExist();
+  })
 });

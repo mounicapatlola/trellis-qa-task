@@ -1,25 +1,22 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {createComponentFactory, Spectator} from "@ngneat/spectator/jest";
 import { TodoInputComponent } from './todo-input.component';
 
 describe('TodoInputComponent', () => {
-  let component: TodoInputComponent;
-  let fixture: ComponentFixture<TodoInputComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TodoInputComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TodoInputComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  const createComponent = createComponentFactory({
+    component: TodoInputComponent
   });
+  let spectator: Spectator<TodoInputComponent>;
+  beforeEach(() => spectator = createComponent())
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  //test to check web page is launched successfully.
+  it('should create app', () => {
+    const app = spectator.component;
+    expect(app).toBeTruthy();
+  });
+  it('check input text field', () => {
+    expect(spectator.query('input')).toExist();
+  });
+  it('check button', () => {
+    expect(spectator.query('button')).toExist();
   });
 });
